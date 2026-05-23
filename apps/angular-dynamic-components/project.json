@@ -1,0 +1,80 @@
+{
+  "name": "angular-dynamic-components",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/angular-dynamic-components/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/angular-dynamic-components",
+        "browser": "apps/angular-dynamic-components/src/main.ts",
+        "tsConfig": "apps/angular-dynamic-components/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/angular-dynamic-components/public"
+          }
+        ],
+        "styles": ["apps/angular-dynamic-components/src/styles.scss"],
+        "server": "apps/angular-dynamic-components/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/angular-dynamic-components/src/server.ts"
+        },
+        "outputMode": "server"
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "angular-dynamic-components:build:production"
+        },
+        "development": {
+          "buildTarget": "angular-dynamic-components:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "angular-dynamic-components:build",
+        "staticFilePath": "dist/apps/angular-dynamic-components/browser",
+        "spa": true
+      }
+    }
+  }
+}
