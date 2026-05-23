@@ -14,10 +14,8 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@angular-dynamic-components/animals": [
-        "./apps/libs/animals/src/index.ts"
-      ],
-      "@angular-dynamic-components/fruits": ["./apps/libs/fruits/src/index.ts"]
+      "@angular-dynamic-components/animals": ["./libs/animals/src/index.ts"],
+      "@angular-dynamic-components/fruits": ["./libs/fruits/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
