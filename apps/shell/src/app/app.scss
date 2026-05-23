@@ -1,0 +1,246 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  color: #1c2430;
+  background:
+    linear-gradient(135deg, rgba(66, 133, 244, 0.12), transparent 34%), #f5f7fb;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+  gap: 1.5rem;
+  width: min(1120px, calc(100% - 2rem));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem 0;
+  align-items: stretch;
+}
+
+.shell__controls,
+.shell__preview {
+  border: 1px solid #d8dee8;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 16px 40px rgba(28, 36, 48, 0.08);
+}
+
+.shell__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+}
+
+.shell__preview {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.shell__header,
+.preview-header {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.preview-header {
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid #e6ebf2;
+}
+
+.shell__eyebrow {
+  margin: 0;
+  color: #52647a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  color: #101828;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  overflow-wrap: anywhere;
+  font-size: 1.5rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+  color: #344054;
+  font-weight: 700;
+}
+
+.field input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #c8d2df;
+  border-radius: 6px;
+  padding: 0.75rem 0.85rem;
+  color: #101828;
+  background: #ffffff;
+  font: inherit;
+  font-weight: 500;
+}
+
+.field input:focus {
+  border-color: #2f6feb;
+  outline: 3px solid rgba(47, 111, 235, 0.18);
+}
+
+.component-picker {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.component-picker legend {
+  margin-bottom: 0.75rem;
+  padding: 0;
+  color: #344054;
+  font-weight: 700;
+}
+
+.component-picker__options {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.component-option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.85rem;
+  border: 1px solid #d8dee8;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #ffffff;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.component-option:hover,
+.component-option--selected {
+  border-color: #2f6feb;
+  box-shadow: 0 10px 24px rgba(47, 111, 235, 0.12);
+}
+
+.component-option:hover {
+  transform: translateY(-1px);
+}
+
+.component-option input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0.2rem 0 0;
+  accent-color: #2f6feb;
+}
+
+.component-option__body {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.component-option__label {
+  color: #101828;
+  font-weight: 800;
+}
+
+.component-option__description {
+  color: #52647a;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.load-button {
+  min-height: 44px;
+  margin-top: auto;
+  border: 0;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  background: #2f6feb;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.load-button:hover {
+  background: #255dc9;
+  transform: translateY(-1px);
+}
+
+.load-button:focus-visible {
+  outline: 3px solid rgba(47, 111, 235, 0.28);
+  outline-offset: 2px;
+}
+
+.preview-stage {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  margin: 1.5rem;
+  border: 1px dashed #b8c4d4;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #344054;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.preview-stage--empty {
+  color: #667085;
+}
+
+.preview-stage__empty {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .shell {
+    grid-template-columns: 1fr;
+    width: min(100% - 1rem, 560px);
+    padding: 0.5rem 0;
+  }
+
+  .shell__controls,
+  .shell__preview {
+    padding: 1rem;
+  }
+
+  .shell__preview {
+    min-height: 320px;
+  }
+
+  .preview-header {
+    padding: 0 0 1rem;
+  }
+
+  .preview-stage {
+    min-height: 220px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+}

@@ -1,0 +1,65 @@
+<main class="shell">
+  <section class="shell__controls" aria-labelledby="shell-title">
+    <header class="shell__header">
+      <p class="shell__eyebrow">Angular dynamic components</p>
+      <h1 id="shell-title">Shell app</h1>
+    </header>
+
+    <label class="field" for="component-title">
+      <span>Component title</span>
+      <input
+        id="component-title"
+        name="componentTitle"
+        type="text"
+        [(ngModel)]="componentTitle"
+        placeholder="Enter a title"
+      />
+    </label>
+
+    <fieldset class="component-picker">
+      <legend>Component</legend>
+
+      <div class="component-picker__options">
+        @for (option of componentOptions; track option.id) {
+        <label
+          class="component-option"
+          [class.component-option--selected]="selectedComponent() === option.id"
+        >
+          <input
+            type="radio"
+            name="selectedComponent"
+            [value]="option.id"
+            [(ngModel)]="selectedComponent"
+          />
+
+          <span class="component-option__body">
+            <span class="component-option__label">{{ option.label }}</span>
+          </span>
+        </label>
+        }
+      </div>
+      <span>Increment count: {{ increments() }}</span>
+    </fieldset>
+
+    <button class="load-button" type="button" (click)="loadComponent()">
+      Load Component Dynamically
+    </button>
+  </section>
+
+  <section class="shell__preview" aria-labelledby="preview-title">
+    <div class="preview-header">
+      <p class="shell__eyebrow">Preview</p>
+    </div>
+
+    <div
+      class="preview-stage"
+      [class.preview-stage--empty]="!hasLoadedComponent"
+    >
+      @if (!hasLoadedComponent) {
+      <p class="preview-stage__empty">No component loaded</p>
+      }
+
+      <ng-container #componentHost />
+    </div>
+  </section>
+</main>

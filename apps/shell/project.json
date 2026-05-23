@@ -1,29 +1,29 @@
 {
-  "name": "angular-dynamic-components",
+  "name": "shell",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/angular-dynamic-components/src",
+  "sourceRoot": "apps/shell/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/angular-dynamic-components",
-        "browser": "apps/angular-dynamic-components/src/main.ts",
-        "tsConfig": "apps/angular-dynamic-components/tsconfig.app.json",
+        "outputPath": "dist/apps/shell",
+        "browser": "apps/shell/src/main.ts",
+        "tsConfig": "apps/shell/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/angular-dynamic-components/public"
+            "input": "apps/shell/public"
           }
         ],
-        "styles": ["apps/angular-dynamic-components/src/styles.scss"],
-        "server": "apps/angular-dynamic-components/src/main.server.ts",
+        "styles": ["apps/shell/src/styles.scss"],
+        "server": "apps/shell/src/main.server.ts",
         "ssr": {
-          "entry": "apps/angular-dynamic-components/src/server.ts"
+          "entry": "apps/shell/src/server.ts"
         },
         "outputMode": "server"
       },
@@ -56,10 +56,10 @@
       "executor": "@angular/build:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "angular-dynamic-components:build:production"
+          "buildTarget": "shell:build:production"
         },
         "development": {
-          "buildTarget": "angular-dynamic-components:build:development"
+          "buildTarget": "shell:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -71,8 +71,8 @@
       "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "angular-dynamic-components:build",
-        "staticFilePath": "dist/apps/angular-dynamic-components/browser",
+        "buildTarget": "shell:build",
+        "staticFilePath": "dist/apps/shell/browser",
         "spa": true
       }
     }
